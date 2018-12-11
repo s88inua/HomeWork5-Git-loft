@@ -4,11 +4,12 @@ require_once '../vendor/autoload.php';
 
 use WideImage\WideImage as WideImage;
 
-if (TRUE){
-$image = WideImage::loadFromFile(__DIR__.'./images/pic1.png');
-$watermark = WideImage::loadFromFile(__DIR__.'./images/logo.gif');
-$image->merge($watermark, 500, 500)->resize(200)->saveToFile('./images/image1.jpg');
-echo 'OK';
-} else { echo 'NO';}
+
+$image = WideImage::loadFromFile(__DIR__.'./images/pic.png');
+$watermark = WideImage::loadFromFile(__DIR__.'./images/logo.png');
+$image->rotate(45)->merge($watermark, 1000, 600)->rotate(-45)->resize(200)->saveToFile('./images/image.png');
+
+$FinalImage = WideImage::loadFromFile(__DIR__.'./images/image.png');
+$FinalImage->output('png');
 
 
